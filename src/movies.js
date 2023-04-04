@@ -68,13 +68,16 @@ const orderAlphabetically = moviesArray => {
 
 // BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
 function turnHoursToMinutes(moviesArray) {
-   const newMoviesArray= moviesArray.map(movie=>movie).forEach(movie => {
+   const newMoviesArray= moviesArray.map(movie=>movie)
+   newMoviesArray.forEach(function(movie) {
+    const [hours, minutes] = movie.duration.split("h").map(digit => parseInt(digit.trim(), 10));
+    const totalMinutes=hours * 60 + minutes;
+    movie.duration = totalMinutes;
 
-    const [hours, minutes] = time.split("h").map(digit => parseInt(digit.trim(), 10));
-    return hours * 60 + minutes;
   });
-  
+  console.log(newMoviesArray)
   return newMoviesArray 
+  
 
  
 }
